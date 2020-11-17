@@ -1,0 +1,98 @@
+
+<div class="container" *ngIf="firstTrys">
+        <div *ngIf="!getName">
+            <div *ngIf="!change;else tryOne">
+                <h3>{{firstTry.oneContainer}} Как тебя зовут?</h3>
+            </div>
+            <ng-template #tryOne>
+                <h3>{{twoTry.oneContainer}} Как тебя зовут?</h3>
+            </ng-template>
+            <form action="">
+                <input #NAME="ngModel" [(ngModel)]="person.name" required name="name" placeholder="Введи свое имя" type="text" pattern="[a-zA-Zа-яА-ЯёЁ ]+" minlength="3" maxlength="10">
+                <button [disabled]="NAME.invalid" (click)="showName()">Отправить</button>
+                <p class="valid" *ngIf="NAME.invalid">Имя не введено или значение не валидно</p>
+            </form>
+        </div>
+
+        <div class="container" *ngIf="getName && !gethobby">
+            <div *ngIf="!change;else tryTwo">
+                <h3>Привет <span class="enterText">{{person.name}}!</span> {{firstTry.twoContainer}}</h3>
+            </div>
+            <ng-template #tryTwo>
+                <h3>Привет <span class="enterText">{{person.name}}!</span> {{twoTry.twoContainer}}</h3>
+            </ng-template>
+            <form action="">
+                <p>Расскажи мне, что тебе нравится? Чем ты увлекаешься? Может быть, у тебя даже есть хобби! Мне все интересно! И к тому же это поможет выбрать тебе подарок!</p>
+                <textarea #HOBBY="ngModel" [(ngModel)]="person.hobby" class="hobby" id="hobby" name="hobby" required placeholder="Расскажи об увлечениях" minlength="10" maxlength="200"></textarea>
+                <button [disabled]="HOBBY.invalid" (click)="getHobby()">Отправить</button>
+                <p class="valid padd" *ngIf="HOBBY.invalid">Хобби не введено</p>
+            </form>
+        </div>
+        <div class="container adress" *ngIf="gethobby && !getadress">
+            <h3>Как здорово узнавать что-то новое о людях!</h3>
+            <form action="">
+                <p>А теперь напиши мне свой домашний адрес, чтобы я знал, куда отправлять подарочек!!</p>
+                <div><input #CITY="ngModel" required [(ngModel)]="person.adress.city" name="city" type="text" placeholder="Город" pattern="[a-zA-Zа-яА-ЯёЁ ]+">
+                <p class="valid padd" *ngIf="CITY.invalid">Город не введен или значение не валидно</p></div>
+                <div><input #STREET="ngModel" required [(ngModel)]="person.adress.street" name="street" type="text" placeholder="Улица" min="3">
+                <p class="valid padd" *ngIf="STREET.invalid">Улица не введена</p></div>
+                <div><input #HOME="ngModel" required [(ngModel)]="person.adress.home" name="home" type="number" placeholder="Номер дома">
+                <p class="valid padd" *ngIf="HOME.invalid">Номер дома не введен</p></div>
+                <div><input #APPARTMENT="ngModel" required [(ngModel)]="person.adress.apartment" name="apartment" type="number" placeholder="Номер квартиры" pattern="[0-9]+">
+                <p class="valid padd" *ngIf="APPARTMENT.invalid">Номер квартиры не введен</p></div>
+                <div><input #POSTCODE="ngModel" required [(ngModel)]="person.adress.postcode" name="postcode" type="number" placeholder="Почтовый индекс" pattern="[0-9]+">
+                <p class="valid padd" *ngIf="POSTCODE.invalid">Почтовый индекс не введен</p></div>
+                <button [disabled]="CITY.invalid || STREET.invalid || HOME.invalid || APPARTMENT.invalid || POSTCODE.invalid" (click)="getAdress()">Отправить</button>
+            </form>
+        </div>
+        <div class="container" *ngIf="getadress && !pullPerson">
+            <h3>Ура! мы справились со всеми вопросами! теперь настало время самого интересного! начнем?</h3>
+            <button (click)="ready()">Конечно :)</button>
+            <button class="padd" (click)="personRename()">
+                Заново! :(
+            </button> 
+        </div>
+        <div *ngIf="pullPerson && !getRandomName">
+            <h1>Ну что, <span class="enterText">{{person.name}}</span>!, теперь мы наконец-то можем узнать имя того, чьим Тайным Cантой ты будешь!</h1>
+            <button (click)="randomName()">Узнать Имя!</button>
+        </div>
+        <div *ngIf="getRandomName && firstTrys">
+            <h2 *ngIf="clickOn"><span class="enterText random">{{random}}!</span></h2>
+        </div>
+        <div *ngIf="getRandomName && firstTrys">
+            <h3>Хочешь узнать адрес и хобби?</h3>
+            <button (click)="onnnn()">Узнать</button>
+            <div *ngIf="showHobbyAndAdress && firstTrys">
+                <p class="pos">Хобби: <span class="enterText">{{ArrayPersons[0].hobby}}</span></p>
+                <p class="pos">Адрес:</p>
+                <ul class="pos">
+                    <li>Город: <span class="enterText">{{ArrayPersons[0].adress.city}}</span></li>
+                    <li>Улица: <span class="enterText">{{ArrayPersons[0].adress.street}}</span></li>
+                    <li>Номер дома: <span class="enterText">{{ArrayPersons[0].adress.home}}</span></li>
+                    <li>Номер квартиры: <span class="enterText">{{ArrayPersons[0].adress.apartment}}</span></li>
+                    <li>Почтовый индекс: <span class="enterText">{{ArrayPersons[0].adress.postcode}}</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+        <div defer *ngIf="!firstTrys">
+            К сожалению, ты уже знаешь всю информацию о человеке, которому будешь дарить подарок! 
+            Но если ты хочешь видеть сколько времени осталось до Нового 2021 года - жми на кнопку!
+                <br>
+            <button class="link" routerLink="/">ЖМИ!</button>
+
+        </div>
+
+       <!--  <div>
+            <button (click)="on()"></button>
+           <div>список существующих в базе имен {{nameArray}}</div>
+           <button (click)="pppp()">
+               CCCC
+           </button>
+           Список имен в базе:
+           <ul *ngIf="listName">
+               <li *ngFor="let name of nameArray">{{name.id}}</li>
+           </ul>
+        </div> -->
+
+
