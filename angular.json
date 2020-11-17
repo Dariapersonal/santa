@@ -121,8 +121,13 @@
               "devServerTarget": "secret-santa:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "secret-santa"
 }
