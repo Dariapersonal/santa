@@ -206,7 +206,7 @@
     </div>
   </div>
 </div>
-<div defer *ngIf="!firstTrys && !showRemindName">
+<div class="container" defer *ngIf="!firstTrys && !showRemindName">
   <h3>
     Забыл кому даришь подарок? Давай напомню! Но для начала напомни свое имя, а
     то дедушка уже старенький, позабыл!
@@ -231,7 +231,7 @@
     </p>
   </form>
 </div>
-<div *ngIf="showRemindName">
+<div class="container" *ngIf="showRemindName">
   <h3>
     Ты Тайный Санта для: <span class="enterText">{{ remindRandomName }}</span>
   </h3>
@@ -263,4 +263,7 @@
       </li>
     </ul>
   </div>
+</div>
+<div *ngIf="nameNotFound">
+   <h3>Упс, что-то пошло не так! Видимо твоего имени нет в моем списке! Проверь, правильно ли ты его ввел!</h3>
 </div>

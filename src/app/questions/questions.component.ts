@@ -184,6 +184,7 @@ export class QuestionsComponent implements OnInit {
   showRemindName = false;
   ArrayAdress: Person[] = [];
   showRemindAdress = false;
+  nameNotFound = false
 
   getRemindName() {
     this.dataservice.getNamesOfDataBase().subscribe((persons) => {
@@ -197,10 +198,13 @@ export class QuestionsComponent implements OnInit {
       let key = localStorage.key(i);
       if (key === this.remind) {
         this.remindRandomName = localStorage.getItem(key);
+        this.showRemindName = true;
+      }
+      else {
+        this.nameNotFound = true
       }
     }
 
-    this.showRemindName = true;
     this.dataservice
       .getPersonsOfDataBase(this.remindRandomName)
       .subscribe((persons) => {
