@@ -34,6 +34,7 @@ interface Response {
 export class DataService {
 
   static url = "https://secret-santa-b465e.firebaseio.com/persons"
+  static urlTwo = "https://secret-santa-b465e.firebaseio.com/data-base-of-persons"
 
   namePerson = ""
 
@@ -67,6 +68,30 @@ export class DataService {
       
   }
 
+  getNamesOfDataBase(): Observable<Array<Person>> {
+    return this.http
+      .get<Array<Person>>(`${DataService.urlTwo}.json`)
+      .pipe(map(persons => {
+        if (!persons) {
+          return []
+        }
+        return Object.keys(persons).map( key => ({...persons[''], id: key}))
+      }))
+      
+  }
+
+  getPersonsOfDataBase(name: string): Observable<Array<Person>> {
+    return this.http
+      .get<Array<Person>>(`${DataService.urlTwo}/${name}.json`)
+      .pipe(map(persons => {
+        if (!persons) {
+          return []
+        }
+        return Object.keys(persons).map( key => ({...persons[key], id: key}))
+      }))
+      
+  }
+
   getPersons(name: string): Observable<Array<Person>> {
     return this.http
       .get<Array<Person>>(`${DataService.url}/${name}.json`)
@@ -79,13 +104,13 @@ export class DataService {
       
   }
 
-  personsDef(person: Person) {
+  /* personsDef(person: Person) {
     return this.http
       .post<Response>(`${DataService.url}/${person.name}.json`, person)
       .pipe(map(res=>{
         return {...person, id: res.name}
       }))
-  }
+  } */
 
   remove(name: string): Observable<void> {
     return this.http
@@ -134,4 +159,11 @@ export class DataService {
       }))
 
   }
+  createPersonsOfDataBase(person: Person): Observable<Person> {
+    return this.http
+      .post<Response>(`${DataService.urlTwo}/${person.name}.json`, person)
+      .pipe(map(res=>{
+        return {...person, id: res.name}
+      }))
+  }    
 }

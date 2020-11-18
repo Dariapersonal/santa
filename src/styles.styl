@@ -210,7 +210,7 @@ body
 }
 }
 
-button:hover, button:focus 
+button:hover, button:focus
   box-shadow: 0 0.5em 0.5em -0.4em
   transform: translateY(-0.25em);
 
@@ -227,6 +227,11 @@ button
   font-weight: bold
   vertical-align: top
   
+button:disabled 
+  border 3px solid rgba(31,182,215,1);
+  color  rgba(31,182,215,0.8)
+  box-shadow: none
+  transform: none
 
 .padd 
   margin-left 10% !important
@@ -249,6 +254,10 @@ input, textarea
   margin-bottom: 40px
   color #1E90FF
 
+textarea
+  font-size 20px
+  height 200px !important
+
 ul, li 
   list-style none
 
@@ -270,7 +279,7 @@ ul, li
   padding 0
   margin 0
   margin-top -40px
-  color #fbb1dd
+  color rgba(31,182,215,1)
   text-align: start
 
 .pos 
