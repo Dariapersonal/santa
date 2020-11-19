@@ -231,7 +231,7 @@
     </p>
   </form>
 </div>
-<div class="container" *ngIf="showRemindName">
+<div class="container" *ngIf="showRemindName && !nameNotFound">
   <h3>
     Ты Тайный Санта для: <span class="enterText">{{ remindRandomName }}</span>
   </h3>

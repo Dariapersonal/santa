@@ -199,10 +199,12 @@ export class QuestionsComponent implements OnInit {
       if (key === this.remind) {
         this.remindRandomName = localStorage.getItem(key);
         this.showRemindName = true;
-      }
-      else {
-        this.nameNotFound = true
-      }
+      } 
+    }
+
+    
+    if (!this.showRemindName) {
+      this.nameNotFound = true
     }
 
     this.dataservice
@@ -212,8 +214,9 @@ export class QuestionsComponent implements OnInit {
         console.log(persons);
       });
 
-    /* let key = localStorage.key(1)
-    console.log(key) */
+      setTimeout(()=>{return this.nameNotFound = false}, 3000)
+
+
   }
 
   getRemindAdress() {
