@@ -42,20 +42,10 @@ export class DataService {
   
   
 
-  /* Persons: Array<Person> =[] */
+
   constructor(private http: HttpClient) { }
 
- /*  getlistOfName(name: string): Observable<Array<string>> {
-    return this.http
-      .get<Array<string>>(`${DataService.url}/${name}.json`)
-      .pipe(map(names => {
-        if (!names) {
-          return []
-        }
-        return Object.keys(names).map(key => ({...names[key], id: key}))
-      }))
-  }
- */
+ 
   getNames(): Observable<Array<Person>> {
     return this.http
       .get<Array<Person>>(`${DataService.url}.json`)
@@ -67,6 +57,8 @@ export class DataService {
       }))
       
   }
+
+
 
   getNamesOfDataBase(): Observable<Array<Person>> {
     return this.http
