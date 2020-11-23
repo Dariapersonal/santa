@@ -111,7 +111,7 @@ export class DataService {
 
 
 
-  /* getHobby(): Observable<Array<Person>> {
+  /* getHobby(): Observable<Array<Person>> { Имя не введено или значение не валидно я
     return this.http
       .get<Array<Person>>(`${DataService.url}/.json`)
       .pipe(map(persons => {

@@ -1,4 +1,4 @@
-<div class="container" *ngIf="firstTrys">
+<div class="padding" *ngIf="firstTrys">
   <div *ngIf="!getName">
     <div *ngIf="!change; else tryOne">
       <h3>{{ firstTry.oneContainer }} Как тебя зовут?</h3>
@@ -12,7 +12,7 @@
         [(ngModel)]="person.name"
         required
         name="name"
-        placeholder="Введи свое имя"
+        placeholder="Введи свое имя и фамилию"
         type="text"
         pattern="[a-zA-Zа-яА-ЯёЁ ]+"
         minlength="3"
@@ -27,7 +27,7 @@
     </form>
   </div>
 
-  <div class="container" *ngIf="getName && !gethobby">
+  <div *ngIf="getName && !gethobby">
     <div *ngIf="!change; else tryTwo">
       <h3>
         Привет <span class="enterText">{{ person.name }}!</span>
@@ -62,7 +62,7 @@
       </p>
     </form>
   </div>
-  <div class="container adress" *ngIf="gethobby && !getadress">
+  <div class="adress" *ngIf="gethobby && !getadress">
     <h3>Как здорово узнавать что-то новое о людях!</h3>
     <form action="">
       <p>
@@ -79,8 +79,8 @@
           placeholder="Город"
           pattern="[a-zA-Zа-яА-ЯёЁ ]+"
         />
-        <p class="valid padd" *ngIf="CITY.invalid && CITY.touched">
-          Город не введен или значение не валидно
+        <p class="valid p" *ngIf="CITY.invalid && CITY.touched">
+          Город не введен
         </p>
       </div>
       <div>
@@ -93,7 +93,7 @@
           placeholder="Улица"
           min="3"
         />
-        <p class="valid padd" *ngIf="STREET.invalid && STREET.touched">
+        <p class="valid p" *ngIf="STREET.invalid && STREET.touched">
           Улица не введена
         </p>
       </div>
@@ -106,7 +106,7 @@
           type="number"
           placeholder="Номер дома"
         />
-        <p class="valid padd" *ngIf="HOME.invalid && HOME.touched">
+        <p class="valid p" *ngIf="HOME.invalid && HOME.touched">
           Номер дома не введен
         </p>
       </div>
@@ -120,7 +120,7 @@
           placeholder="Номер квартиры"
           pattern="[0-9]+"
         />
-        <p class="valid padd" *ngIf="APPARTMENT.invalid && APPARTMENT.touched">
+        <p class="valid p" *ngIf="APPARTMENT.invalid && APPARTMENT.touched">
           Номер квартиры не введен
         </p>
       </div>
@@ -134,7 +134,7 @@
           placeholder="Почтовый индекс"
           pattern="[0-9]{6}"
         />
-        <p class="valid padd" *ngIf="POSTCODE.invalid && POSTCODE.touched">
+        <p class="valid p" *ngIf="POSTCODE.invalid && POSTCODE.touched">
           Почтовый индекс не введен
         </p>
       </div>
@@ -152,12 +152,12 @@
       </button>
     </form>
   </div>
-  <div class="container" *ngIf="getadress && !pullPerson">
+  <div *ngIf="getadress && !pullPerson">
     <h3>
       Ура! мы справились со всеми вопросами! теперь настало время самого
       интересного! начнем?
     </h3>
-    <button (click)="ready()">Конечно :)</button>
+    <button class="p-g" (click)="ready()">Конечно :)</button>
     <button class="padd" (click)="personRename()">Заново! :(</button>
   </div>
   <div *ngIf="pullPerson && !getRandomName">
@@ -174,7 +174,7 @@
     </h2>
   </div>
   <div *ngIf="getRandomName && firstTrys">
-    <h3>Хочешь узнать адрес и хобби?</h3>
+    <h3 class="m">Хочешь узнать адрес и хобби?</h3>
     <button (click)="showAdressRandom()">Узнать</button>
     <div *ngIf="showHobbyAndAdress && firstTrys">
       <p class="pos">
@@ -206,7 +206,7 @@
     </div>
   </div>
 </div>
-<div class="container" defer *ngIf="!firstTrys && !showRemindName">
+<div defer *ngIf="!firstTrys && !showRemindName">
   <h3>
     Забыл кому даришь подарок? Давай напомню! Но для начала напомни свое имя, а
     то дедушка уже старенький, позабыл!
@@ -217,7 +217,7 @@
       [(ngModel)]="remind"
       required
       name="remind"
-      placeholder="Введи свое имя"
+      placeholder="Введи свое имя и фамилию"
       type="text"
       pattern="[a-zA-Zа-яА-ЯёЁ ]+"
       minlength="3"
@@ -226,12 +226,12 @@
     <button [disabled]="REMIND.invalid" (click)="getRemindName()">
       Отправить
     </button>
-    <p class="valid padd" class="valid" *ngIf="REMIND.invalid && REMIND.touched">
+    <p class="valid pos padd" *ngIf="REMIND.invalid && REMIND.touched">
       Имя не введено или значение не валидно
     </p>
   </form>
 </div>
-<div class="container" *ngIf="showRemindName && !nameNotFound">
+<div *ngIf="showRemindName && !nameNotFound">
   <h3>
     Ты Тайный Санта для: <span class="enterText">{{ remindRandomName }}</span>
   </h3>

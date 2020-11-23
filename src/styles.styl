@@ -10,13 +10,14 @@ body
   margin 0
   padding 0
   width: 100vw
-  height: 100vh
+  height 100vh
   overflow hidden
   color #C71585;
   background: rgb(31,182,215)
   background: linear-gradient(0deg, rgba(31,182,215,0.6) 0%, rgba(255,255,255,0.6) 100%)
-  font-family: 'Pacifico', cursive;
+  font-family: 'Balsamiq Sans', cursive;
   text-align: center
+  background-attachment: fixed
 
 
 
@@ -234,7 +235,7 @@ button:disabled
   transform: none
 
 .padd 
-  margin-left 10% !important
+  margin-left 7% !important
 
 
 
@@ -255,7 +256,7 @@ input, textarea
   color #1E90FF
 
 textarea
-  font-size 20px
+  font-size 18px
   height 200px !important
 
 ul, li 
@@ -271,18 +272,133 @@ ul, li
   padding 20px
   border-radius: 20px
   border solid #fbb1dd 3px
+  
 
-
+.m 
+  margin-top 50px
+.p
+  margin-left 13% !important
 
 
 .valid 
   padding 0
-  margin 0
-  margin-top -40px
+  margin -30px 0 10px 10px
   color rgba(31,182,215,1)
   text-align: start
+  width 70%
+  font-size 16px
 
 .pos 
   text-align: start
+
+.container 
+  max-width 850px
+  height: max-content
+  margin 0 auto 20px
+  background-color rgba(255,255,255,.6)
+  border-radius: 20px 
+  padding 30px
+  display flex
+  justify-content: center
+  border 3px solid #f986cc
+
+.container h1 h2 h3 h4 
+  width 80%
+
+@media (max-height 850px)
+  body
+    overflow-y: scroll
+@media (max-width 850px)
+  body
+    font-size 20px !important
+  .container
+    max-width 700px
+  .sign
+    &__word
+      font-size 3rem !important
+  input 
+    margin-bottom 20px
+    width 70%
+  .valid
+    margin -20px 0 0 10px
+  .padd
+    margin-left 5% !important
+  .p 
+    margin-left 16% !important
+  .enterText 
+    font-size: 24px
+
+@media (max-width 700px)
+  body
+    font-size 19px !important
+  .container
+    max-width 600px
+  .sign
+    flex-direction: row
+    flex-wrap: wrap
+    &__word
+      font-size 2.8rem !important
+  .main
+    padding: 50px 0 30px 0 !important
+  .enterText 
+    font-size: 22px
+
+@media (max-width 600px)
+  body
+    font-size 18px !important
+  .container
+    max-width 500px
+  .sign
+    &__word
+      font-size 2.5rem !important
+  .main
+    padding: 50px 0 20px 0 !important
+  .enterText 
+    font-size: 20px 
+
+@media (max-width 500px)
+  .container
+    max-width 400px
+  input
+    width 65%
+  .padd
+    margin-left 4% !important
+  textarea 
+    width: 65%
+  .p 
+    margin-left 18% !important
+  .enterText 
+    font-size: 18px
+
+
+@media (max-width 430px)
+  .container
+    max-width 300px
+    padding 0 5px 20px 5px
+  input
+    width 50%
+  button 
+    width 50%
+  .p-g
+    margin-bottom: 10px !important
+  .padd
+    margin 0 !important
+  textarea 
+    width: 50%
+  .p 
+    margin-left 26% !important
+  .enterText 
+    font-size: 18px
+  textarea
+    margin-bottom 10px
+  .valid
+    margin -15px 0 0 10px
+
+
+
+
+
+    
+  
 
 
