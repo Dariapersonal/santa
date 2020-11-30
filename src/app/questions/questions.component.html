@@ -43,7 +43,7 @@
     <form action="">
       <p>
         Расскажи мне, что тебе нравится? Чем ты увлекаешься? Может быть, у тебя
-        даже есть хобби! И к тому же, это поможет выбрать тебе подарок!
+        даже есть хобби! Мне интересно ВСЕ!
       </p>
       <textarea
         #HOBBY="ngModel"
@@ -67,7 +67,7 @@
     <form action="">
       <p>
         А теперь напиши мне свой домашний адрес, чтобы я знал, куда отправлять
-        подарочек!!
+        подарочек!
       </p>
       <div>
         <input
@@ -154,17 +154,15 @@
   </div>
   <div *ngIf="getadress && !pullPerson">
     <h3>
-      Ура! мы справились со всеми вопросами! теперь настало время самого
-      интересного! начнем?
+      Ура! Спасибо тебе, за твои ответы! Давай наконец приступим ко второй части празника! Стань моим помощником и подари праздник друзьям!
     </h3>
-    <button class="p-g" (click)="ready()">Конечно :)</button>
-    <button class="padd" (click)="personRename()">Заново! :(</button>
+    <button class="p-g" (click)="ready()">Ура! Вперед! :)</button>
+    <button class="padd" (click)="personRename()">Я ввел данные не верно :(</button>
   </div>
   <div *ngIf="pullPerson && !getRandomName">
     <h3>
-      Ну что, <span class="enterText">{{ person.name }}</span
-      >!, теперь мы наконец-то можем узнать имя того, чьим Тайным Cантой ты
-      будешь!
+      Ну что, мой помощник <span class="enterText">{{ person.name }}</span
+      >, теперь ты можешь узнать имя своего коллеги и подарить ему новогоднее чудо!
     </h3>
     <button (click)="randomName()">Узнать Имя!</button>
   </div>
@@ -174,7 +172,7 @@
     </h2>
   </div>
   <div *ngIf="getRandomName && firstTrys">
-    <h3 class="m">Хочешь узнать адрес и хобби?</h3>
+    <h3 class="m">Хочешь узнать его/её адрес и хобби?</h3>
     <button (click)="showAdressRandom()">Узнать</button>
     <div *ngIf="showHobbyAndAdress && firstTrys">
       <p class="pos">
@@ -233,7 +231,8 @@
 </div>
 <div *ngIf="showRemindName && !nameNotFound">
   <h3>
-    Ты Тайный Санта для: <span class="enterText">{{ remindRandomName }}</span>
+    Ты даришь подарок замечательному человеку! <br>
+    Это <span class="enterText">{{ remindRandomName }}</span>
   </h3>
   <h4>напомнить список увлечений и адрес?</h4>
   <button (click)="getRemindAdress()">Давай! :)</button>
