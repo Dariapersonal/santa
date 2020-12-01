@@ -54,7 +54,7 @@
         required
         placeholder="Расскажи об увлечениях"
         minlength="10"
-        maxlength="200"
+        maxlength="700"
       ></textarea>
       <button [disabled]="HOBBY.invalid" (click)="getHobby()">Отправить</button>
       <p class="valid padd" *ngIf="HOBBY.invalid && HOBBY.touched">
